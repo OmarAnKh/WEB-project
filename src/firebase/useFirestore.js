@@ -1,6 +1,6 @@
 import "../App.css";
 import { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from './firebase';
 
 
@@ -11,7 +11,7 @@ export const useFireStore = (collectioName) => {
 
     const getData = async () => {
 
-        await getDocs(collection(db, collectioName))
+        await  getDocs(collection(db, collectioName))
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -20,17 +20,25 @@ export const useFireStore = (collectioName) => {
     }
 
 
-    const deleteData = async () => {
+    const editData = async (id, editOBJ, newValue) => {
+        const docRef = doc(db, collectioName, id);
+        await updateDoc(docRef, {
+            [editOBJ]: newValue
+        });
+
+    }
+
+
+    const deleteData = async (id) => {
         await deleteDoc(doc(db, collectioName, id));
     }
 
 
-    const addData = async (e, title, owner) => {
+    const addData = async (e, data) => {
         e.preventDefault();
         try {
             const docRef = await addDoc(collection(db, collectioName), {
-                title: title,
-                owner: owner
+                title: data
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
@@ -43,6 +51,6 @@ export const useFireStore = (collectioName) => {
 
     useEffect(() => {
         getData();
-    }, [data])
-    return { data, addData, deleteData }
+    }, [])
+    return { data, addData, deleteData, editData, getData }
 }
