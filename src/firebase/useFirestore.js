@@ -1,23 +1,19 @@
 import "../App.css";
 import { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, deleteDoc, doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from './firebase';
-
-
 
 export const useFireStore = (collectioName) => {
     const [data, setData] = useState([]);
 
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, collectioName), (querySnapshot) => {
+            const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            setData(newData)
+        })
+        return () => unsubscribe()
+    }, [collectioName])
 
-    const getData = async () => {
-
-        await  getDocs(collection(db, collectioName))
-            .then((querySnapshot) => {
-                const newData = querySnapshot.docs
-                    .map((doc) => ({ ...doc.data(), id: doc.id }));
-                setData(newData);
-            })
-    }
 
 
     const editData = async (id, editOBJ, newValue) => {
@@ -25,14 +21,11 @@ export const useFireStore = (collectioName) => {
         await updateDoc(docRef, {
             [editOBJ]: newValue
         });
-
     }
-
 
     const deleteData = async (id) => {
         await deleteDoc(doc(db, collectioName, id));
     }
-
 
     const addData = async (e, data) => {
         e.preventDefault();
@@ -46,11 +39,5 @@ export const useFireStore = (collectioName) => {
         }
     }
 
-
-
-
-    useEffect(() => {
-        getData();
-    }, [])
-    return { data, addData, deleteData, editData, getData }
+    return { data, addData, deleteData, editData };
 }
