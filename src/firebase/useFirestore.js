@@ -1,8 +1,7 @@
 import "../App.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, cloneElement } from 'react';
 import { collection, addDoc, deleteDoc, doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from './firebase';
-
 export const useFireStore = (collectioName) => {
     const [data, setData] = useState([]);
 
@@ -39,5 +38,26 @@ export const useFireStore = (collectioName) => {
         }
     }
 
-    return { data, addData, deleteData, editData };
+    const updateArray = async (index, id, collectioName, Doc, content, auther = "anonymous", time = "now", photo = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", likes = 0, views = 0) => {
+
+        let comments = Doc
+
+        comments = [...Doc, {
+            comment: {
+                content,
+                auther,
+                time,
+                photo,
+                views,
+                likes
+            }
+        }]
+
+        const ref = doc(db, collectioName, id);
+        await updateDoc(ref, {
+            comments
+        });
+    }
+
+    return { data, addData, deleteData, editData, updateArray };
 }

@@ -1,26 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFireStore } from "../firebase/useFirestore";
 import Comments from "./Comments";
+
 import './OmarCompStyle.css'
 const Post = (props) => {
+    const [commentContent, setCommentContent] = useState("");
     const data = props.video
     const collection_name = props.collection_name
     const id = props.id
     const { editData } = useFireStore(collection_name);
     const allVideos = useFireStore(collection_name).data
-    const { addData } = useFireStore("comments");
+    const { updateArray } = useFireStore(props.comments_section)
     const [owner, setOwner] = useState("")
     const [comment, setComment] = useState("")
     const [likeColor, setlikeColor] = useState("gray")
     const [likeWord, setlikeWord] = useState("Like")
     const [commentColor, setCommentColor] = useState("gray")
+    const [commentsState, setCommentsState] = useState(0);
     const [commentWord, setCommentWord] = useState("comment")
     function likeButton() {
         if (likeColor === "gray") {
             setlikeColor("blue");
             setlikeWord("Liked");
             const postId = allVideos[id]?.id;
-
             if (postId) {
                 editData(postId, "likes", data?.likes + 1);
             }
@@ -40,17 +42,24 @@ const Post = (props) => {
         }
     }
     function commentButton() {
-        if (commentColor === "gray") {
-            setCommentColor("blue")
-            setCommentWord("commented")
-        }
-        else if (commentColor === "blue") {
-            setCommentColor("gray")
-            setCommentWord("comment")
-        }
-    }
-    function postComment(documentId) {
 
+        if (commentsState === 0) {
+            setCommentsState(1)
+        }
+        else {
+            setCommentsState(0)
+        }
+
+    }
+
+    function postComment() {
+        updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
+        const postId = allVideos[id]?.id;
+        if (postId) {
+            editData(postId, "comments", data?.comments + 1);
+        }
+        setCommentColor("blue")
+        setCommentWord("commented")
     }
     if (data) {
         return (
@@ -76,28 +85,28 @@ const Post = (props) => {
                                             }
                                         </div>
                                         <div className="d-flex flex-start align-items-center">
-                                            {
 
-                                                <img
-                                                    key={data.id}
-                                                    className="rounded-circle shadow-1-strong me-3"
-                                                    src={data.photo}
-                                                    alt="avatar"
-                                                    width={50}
-                                                    height={50}
-                                                />
 
-                                            }
+                                            <img
+                                                key={data.id}
+                                                className="rounded-circle shadow-1-strong me-3"
+                                                src={data.photo}
+                                                alt="avatar"
+                                                width={50}
+                                                height={50}
+                                            />
+
+
 
                                             <div>
                                                 <br></br>
                                                 <h6 className="fw-bold text-primary mb-1">{
 
-                                                    <p key={data.id}>
+                                                    <p key={data.id} style={{ display: "inline" }}>
                                                         {data.owner}
                                                     </p>
 
-                                                }</h6>
+                                                } <i className={data.check} style={{ color: "#32BD88", marginLeft: "5px", display: "inline" }} ></i></h6>
 
                                             </div>
                                         </div>
@@ -113,7 +122,7 @@ const Post = (props) => {
 
                                                         </div>
                                                     </button>
-                                                    <button type="button" className="btn " >
+                                                    <button type="button" className="btn " onClick={commentButton} >
                                                         <i className="far fa-thumbs-up " />
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chat-fill" viewBox="0 0 16 16" style={{ color: commentColor }}>
                                                             <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15" />
@@ -164,24 +173,32 @@ const Post = (props) => {
                                                     height={50}
                                                 />
 
+
                                             }
+
                                             <div className="form-outline w-100">
                                                 <textarea
                                                     className="form-control"
                                                     id="textAreaExample"
                                                     rows={2}
                                                     style={{ background: "#fff" }}
-                                                    defaultValue={""}
-                                                    placeholder="Write a comment" />
+                                                    value={commentContent}
+                                                    onChange={(e) => setCommentContent(e.target.value)}
+                                                    placeholder="Write a comment"
+                                                />
                                                 <div className="float-end mt-2 pt-1">
-                                                    <button type="button" className="btn btn-outline-primary btn-sm" style={{ color: "gray" }} onClick={postComment}>
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        style={{ color: "gray" }}
+                                                        onClick={postComment}
+                                                    >
                                                         Post comment
                                                     </button>
-
                                                 </div>
                                             </div>
                                         </div>
-                                        <Comments comments={props.comments} />
+                                        <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} />
                                     </div>
                                 </div>
                             </div>

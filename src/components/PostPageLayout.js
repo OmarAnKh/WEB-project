@@ -1,7 +1,7 @@
 import Post from "./Post"
 import RelatedVideos from "./RelatedVideos"
 import './OmarCompStyle.css'
-import { useFetcher, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 import { useFireStore } from "../firebase/useFirestore"
 
 const PostPageLayout = () => {
@@ -12,12 +12,12 @@ const PostPageLayout = () => {
     const temp = useFireStore(comments_section).data
     const { data } = useFireStore(collection_name)
 
-    const comments = temp[id]
+    const comments = temp
     const video = data[id]
 
     return (
         <div className="container">
-            <Post video={video} collection_name={collection_name} id={id} comments={comments} />
+            <Post video={video} collection_name={collection_name} id={id} comments={comments} comments_section={comments_section} />
             <div
                 className="card-footer  "
                 style={{ backgroundColor: "#F8F9FA", borderRadius: "10px", padding: "20px", border: "1px solid rgb(210,210,210)" }}>
