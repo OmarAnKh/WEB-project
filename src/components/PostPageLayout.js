@@ -1,7 +1,7 @@
 import Post from "./Post"
 import RelatedVideos from "./RelatedVideos"
 import './OmarCompStyle.css'
-import {  useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useFireStore } from "../firebase/useFirestore"
 
 const PostPageLayout = () => {

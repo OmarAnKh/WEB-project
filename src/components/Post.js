@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFireStore } from "../firebase/useFirestore";
 import Comments from "./Comments";
 
@@ -11,8 +11,6 @@ const Post = (props) => {
     const { editData } = useFireStore(collection_name);
     const allVideos = useFireStore(collection_name).data
     const { updateArray } = useFireStore(props.comments_section)
-    const [owner, setOwner] = useState("")
-    const [comment, setComment] = useState("")
     const [likeColor, setlikeColor] = useState("gray")
     const [likeWord, setlikeWord] = useState("Like")
     const [commentColor, setCommentColor] = useState("gray")
@@ -73,7 +71,7 @@ const Post = (props) => {
 
                                         <p className="mt-3 mb-4 pb-2 ratio ratio-16x9">
                                             {
-                                                <iframe key={data.id} src={data.link} allowFullScreen></iframe>
+                                                <iframe key={data.id} src={data.link} title={data.title} allowFullScreen></iframe>
                                             }
                                         </p>
 
@@ -111,7 +109,7 @@ const Post = (props) => {
                                             </div>
                                         </div>
 
-                                        <div className="card-footer bg-white" style={{ border: "0" }}>
+                                        <div className="card-footer bg-white" style={{ border: "0", margin: "0px", padding: "0px" }}>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div className="d-flex align-items-center">
                                                     <button onClick={likeButton} type="button" className="btn " >

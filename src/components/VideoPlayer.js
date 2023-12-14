@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import './OmarCompStyle.css'
-const VideoPlayer = ({ videoUrl, thumbnailUrl,publication_time,time }) => {
+const VideoPlayer = ({ videoUrl, thumbnailUrl, publication_time, time }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const handlePlayPause = () => {

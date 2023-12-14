@@ -27,14 +27,14 @@ const RelatedVideos = () => {
                                     <div className="card-body">
                                         <b className="card-title" style={{ fontSize: "17px", marginBottom: 0, marginTop: "5px" }}>
                                             {video.owner}
-                                            <i className={video.check}style={{color:"#32BD88",marginLeft:"5px"}} ></i>
+                                            <i className={video.check} style={{ color: "#32BD88", marginLeft: "5px" }} ></i>
                                         </b>
                                     </div>
                                     <div className="ml-auto" style={{ marginTop: "5px" }}>
                                         <pre style={{ marginBottom: 0 }}>{video.views} views</pre>
                                     </div>
                                 </div>
-                                <Link to={`/PostPageLayout/${video.index}/${video.collection_name}/${video.comments_section} `}  className="card-text" target="blank">
+                                <Link to={`/PostPageLayout/${video.index}/${video.collection_name}/${video.comments_section} `} className="card-text" target="blank">
                                     {video.title}
                                 </Link>
                             </div>

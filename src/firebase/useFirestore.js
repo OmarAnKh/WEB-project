@@ -38,14 +38,14 @@ export const useFireStore = (collectioName) => {
         }
     }
 
-    const updateArray = async (index, id, collectioName, Doc, content, auther = "anonymous", time = "now", photo = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", likes = 0, views = 0) => {
+    const updateArray = async (index, id, collectioName, Doc, content, author = "anonymous", time = "now", photo = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", likes = 0, views = 0) => {
 
         let comments = Doc
 
         comments = [...Doc, {
             comment: {
                 content,
-                auther,
+                author,
                 time,
                 photo,
                 views,
