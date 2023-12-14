@@ -1,13 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Todo from './components/Todo';
+import React from 'react'
+import Music from './component/Music'
+import Footer from './component/Footer'
 
 function App() {
   return (
-    <div className="App">
-      <Todo></Todo>
-    </div>
-  );
+    <>
+      <Music/>
+      <Footer />
+    </>
+
+  )
 }
 
-export default App;
+export default App

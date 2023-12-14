@@ -1,17 +1,12 @@
-import "../App.css";
 import { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from './firebase';
 
-
-
-export const useFireStore = (collectioName) => {
+export const useFirestore = (collectionName) => {
     const [data, setData] = useState([]);
 
-
     const getData = async () => {
-
-        await getDocs(collection(db, collectioName))
+        await getDocs(collection(db, collectionName))
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -19,16 +14,14 @@ export const useFireStore = (collectioName) => {
             })
     }
 
-
-    const deleteData = async () => {
-        await deleteDoc(doc(db, collectioName, id));
+    const deleteData = async (id) => {
+        await deleteDoc(doc(db, collectionName, id));
     }
-
 
     const addData = async (e, title, owner) => {
         e.preventDefault();
         try {
-            const docRef = await addDoc(collection(db, collectioName), {
+            const docRef = await addDoc(collection(db, collectionName), {
                 title: title,
                 owner: owner
             });
@@ -38,11 +31,9 @@ export const useFireStore = (collectioName) => {
         }
     }
 
-
-
-
     useEffect(() => {
         getData();
-    }, [data])
+    }, [collectionName]);
+
     return { data, addData, deleteData }
 }
