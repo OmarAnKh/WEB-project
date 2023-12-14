@@ -34,8 +34,7 @@ const Music = () => {
             </div>
             <div className="col text-end"></div>
         </div>
-
-        <div className="row row-cols-5">
+        <div className="row row-cols-1 row-cols-md-5">
             {data.map((video) => (
             <div className="col" key={video.id}>
                 <div className="card" style={{ maxHeight: "300px" }}>
