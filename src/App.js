@@ -1,15 +1,19 @@
-import React from 'react'
-import Music from './component/Music'
-import Footer from './component/Footer'
+
+import './App.css';
+
+import PostPageLayout from './components/PostPageLayout';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <Music/>
-      <Footer />
-    </>
+    <div className="App">
+      <Routes>
+        <Route path='/PostPageLayout/:id/:collection_name/:comments_section' element={<PostPageLayout />} />
+        
+      </Routes>
 
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

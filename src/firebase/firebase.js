@@ -7,10 +7,11 @@ const firebaseConfig = {
     projectId: "web-project-b0257",
     storageBucket: "web-project-b0257.appspot.com",
     messagingSenderId: "131606367651",
+    databaseURL: "https://web-project-b0257-default-rtdb.europe-west1.firebasedatabase.app",
     appId: "1:131606367651:web:b3ff3071edc49393d55e16",
     measurementId: "G-XCFXLRX2EN"
+
 };
 
-
-const app = initializeApp(firebaseConfig); 
-export const  db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
