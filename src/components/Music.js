@@ -37,7 +37,7 @@ const Music = () => {
             <div className="row row-cols-1 row-cols-md-5">
                 {data.map((video) => (
                     <div className="col" key={video.id}>
-                        <div className="card" style={{ maxHeight: "300px" }}>
+                        <div className="card" style={{ height: "100%" }}>
                             <div className="card-img-top position-relative" style={{ height: "50%" }}>
                                 {playingVideo === video.id ? (
                                     <ReactPlayer
