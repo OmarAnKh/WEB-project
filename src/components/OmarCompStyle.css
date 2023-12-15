@@ -12785,3 +12785,9 @@ a {
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     text-decoration: none;
 }
+.input_reply {
+    border: none;
+    border-bottom: 2px solid rgb(38, 94, 150);
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+}

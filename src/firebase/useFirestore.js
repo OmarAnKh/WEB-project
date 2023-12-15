@@ -50,8 +50,44 @@ export const useFireStore = (collectioName) => {
                 photo,
                 views,
                 likes
-            }
+            }, index: Doc.length, replies: []
         }]
+        const ref = doc(db, collectioName, id);
+        await updateDoc(ref, {
+            comments
+        });
+    }
+
+    const addReply = async (replyIndex, index, id, collectionName, Doc, replyContent = "", replyAuthor = "anonymous", replyTime = "now", replyPhoto = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", replyLikes = 0, replyViews = 0) => {
+        let updatedDoc = [...Doc];
+        let updatedReplies = [...updatedDoc[replyIndex].replies];
+        console.log(updatedDoc)
+        updatedReplies.push({
+            content: replyContent,
+            author: replyAuthor,
+            time: replyTime,
+            photo: replyPhoto,
+            likes: replyLikes,
+            views: replyViews,
+            index: updatedDoc[replyIndex].replies.length
+        });
+
+        updatedDoc[replyIndex] = {
+            ...updatedDoc[replyIndex],
+            replies: updatedReplies
+        };
+
+        const ref = doc(db, collectionName, id);
+        await updateDoc(ref, {
+            comments: updatedDoc
+        });
+
+
+    }
+    const addCommentsLike = async (replyIndex, index, id, collectionName, Doc, amount) => {
+        let comments = Doc
+
+        comments[replyIndex].comment.likes = comments[replyIndex].comment.likes + amount
 
         const ref = doc(db, collectioName, id);
         await updateDoc(ref, {
@@ -59,5 +95,15 @@ export const useFireStore = (collectioName) => {
         });
     }
 
-    return { data, addData, deleteData, editData, updateArray };
+    const addReplysLike = async (replyIndex, commentIndex, index, id, collectionName, Doc, amount) => {
+        let comments = Doc
+
+        comments[commentIndex].replies[replyIndex].likes = comments[commentIndex].replies[replyIndex].likes + amount;
+
+        const ref = doc(db, collectioName, id);
+        await updateDoc(ref, {
+            comments
+        });
+    }
+    return { data, addData, deleteData, editData, updateArray, addReply, addCommentsLike, addReplysLike };
 }

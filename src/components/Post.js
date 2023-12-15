@@ -188,7 +188,7 @@ const Post = (props) => {
                                                 <div className="float-end mt-2 pt-1">
                                                     <button
                                                         type="button"
-                                                        className="btn btn-outline-primary btn-sm"
+                                                        className="btn btn-primary text-white"
                                                         style={{ color: "gray" }}
                                                         onClick={postComment}
                                                     >
@@ -197,7 +197,8 @@ const Post = (props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} visibleComments={visibleComments} setVisibleComments={setVisibleComments} />
+                                        
+                                        <Comments comments={props.comments}  state={commentsState} comments_section={props.comments_section} id={id} visibleComments={visibleComments} setVisibleComments={setVisibleComments} />
                                     </div>
                                 </div>
                             </div>

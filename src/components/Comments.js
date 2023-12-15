@@ -1,7 +1,47 @@
 import Replies from "./Replies";
 import './OmarCompStyle.css'
-
+import { useState } from "react";
+import { useFireStore } from "../firebase/useFirestore";
 const Comments = (props) => {
+    const [showReplyInput, setShowReplyInput] = useState(false);
+    const [replyContent, setReplyContent] = useState('');
+    const [commentLikeState, setcommentLikeState] = useState(true);
+    const [replyLikeState, setreplyLikeState] = useState(true);
+    const { addCommentsLike, addReply, addReplysLike } = useFireStore(props.comments_section)
+    const toggleReplyInput = () => {
+        setShowReplyInput(!showReplyInput);
+    };
+    const handleReplyContentChange = (e) => {
+        setReplyContent(e.target.value);
+    };
+    function addNewReply(index) {
+        if (replyContent.trim() !== '') {
+            addReply(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, replyContent);
+            setReplyContent('');
+            setShowReplyInput(false);
+        }
+    }
+    function addCommentLike(index) {
+        if (commentLikeState) {
+            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1);
+            setcommentLikeState(false);
+        } else {
+            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1);
+            setcommentLikeState(true);
+        }
+    }
+    function addReplyLike(prelyIndex, commentIndex) {
+
+        if (replyLikeState) {
+
+            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
+            setreplyLikeState(false);
+        } else {
+            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1)
+            setreplyLikeState(true);
+        }
+
+    }
     const { visibleComments, setVisibleComments } = props;
     const comments = props?.comments
     const videoComments = comments[props?.id]?.comments;
@@ -46,13 +86,15 @@ const Comments = (props) => {
                                                     </div>
                                                     <ul className="nav nav-divider py-2 small">
                                                         <li className="nav-item">
-                                                            <a className="nav-link" href="#!">
+                                                            <a className="nav-link" href="#!" onClick={() => {
+                                                                addCommentLike(comment.index)
+                                                            }}>
                                                                 {" "}
                                                                 Like {comment.comment.likes} &bull;
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
-                                                            <a className="nav-link" href="#!">
+                                                            <a className="nav-link" href="#!" onClick={toggleReplyInput}>
                                                                 {" "}
                                                                 Reply
                                                             </a>
@@ -64,9 +106,16 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                     </ul>
+                                                    {showReplyInput && (
+                                                        <div className="ms-2">
+                                                            <input type="text" className="input_reply" placeholder="Type your reply..." value={replyContent} onChange={handleReplyContentChange} />
+                                                            <button className="btn btn-primary text-white" style={{ margin: "10px" }} onClick={() => addNewReply(comment.index)}>Submit Reply</button>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
-                                            <Replies data={comment.replies} />
+
+                                            <Replies data={comment.replies} index={comment.index} addReplyLike={addReplyLike} />
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +133,7 @@ const Comments = (props) => {
                             <span class="spinner-dot"></span>
                         </div>
                         Load more replies
-
                     </a>
-
                 )}
             </section>
         );
