@@ -1,12 +1,13 @@
 import './OmarCompStyle.css'
 import { useState } from 'react';
 const Replies = (props) => {
-
+    
     const test = props.data;
     const [visibleReplies, setVisibleReplies] = useState(1);
     const loadMoreReplies = () => {
         setVisibleReplies((prevCount) => prevCount + 1);
     };
+
     return (
         <>
 
@@ -44,7 +45,9 @@ const Replies = (props) => {
                                 </div>
                                 <ul className="nav nav-divider py-2 small">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#!">
+                                        <a className="nav-link" href="#!" onClick={() => {
+                                            props.addReplyLike(reply.index, props.index)
+                                        }}>
                                             Like {reply.likes} &bull;
                                         </a>
                                     </li>

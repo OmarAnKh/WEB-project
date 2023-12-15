@@ -1,4 +1,3 @@
-
 import './App.css';
 import MainPageLayout from './components/MainPageLayout'
 
