@@ -2,14 +2,17 @@ import Replies from "./Replies";
 import './OmarCompStyle.css'
 
 const Comments = (props) => {
-
+    const { visibleComments, setVisibleComments } = props;
     const comments = props?.comments
     const videoComments = comments[props?.id]?.comments;
+    const loadMoreComments = () => {
+        setVisibleComments((prevCount) => prevCount + 1);
+    };
     if (props.state) {
         return (
             <section className="gradient-custom">
 
-                {videoComments?.map((comment) => (
+                {videoComments?.slice(0, visibleComments).map((comment) => (
                     <div className="container my-3 " key={props.id}>
                         <div className="row d-flex ">
                             <div className="">
@@ -57,7 +60,7 @@ const Comments = (props) => {
                                                         <li className="nav-item">
                                                             <a className="nav-link" href="#!">
                                                                 {" "}
-                                                                View {comment.comment.views} replies
+                                                                View {comment.replies?.length} replies
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -69,8 +72,22 @@ const Comments = (props) => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 ))}
+                {visibleComments < videoComments?.length && (
+                    <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadMoreComments}>
+                        <div class="spinner-dots me-2">
+                            <span class="spinner-dot"></span>
+                            <span class="spinner-dot"></span>
+                            <span class="spinner-dot"></span>
+                        </div>
+                        Load more replies
+
+                    </a>
+
+                )}
             </section>
         );
     }

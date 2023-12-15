@@ -11,7 +11,7 @@ const RelatedVideos = () => {
             <div className="row justify-content-center">
                 {data?.map((video) => (
                     <div className="col-md-4 mb-4" key={video.id} >
-                        <div className="card" style={{ border: "none" }} >
+                        <div className="card" style={{ border: "none", height: "100%" }} >
                             <div>
                                 <VideoPlayer videoUrl={video.link} thumbnailUrl={video.thumbnail} publication_time={video.publication_time} time={video.time} />
                             </div>
