@@ -1,14 +1,18 @@
 import './OmarCompStyle.css'
+import { useState } from 'react';
 const Replies = (props) => {
 
     const test = props.data;
-
+    const [visibleReplies, setVisibleReplies] = useState(1);
+    const loadMoreReplies = () => {
+        setVisibleReplies((prevCount) => prevCount + 1);
+    };
     return (
         <>
 
             {
 
-                test?.map((reply, index) => (
+                test?.slice(0, visibleReplies).map((reply, index) => (
 
                     <div key={index}>
                         <div className="d-flex"></div>
@@ -56,6 +60,18 @@ const Replies = (props) => {
                     </div >
                 ))
             }
+            {visibleReplies < props.data?.length && (
+
+                <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadMoreReplies}>
+                    <div class="spinner-dots me-2">
+                        <span class="spinner-dot"></span>
+                        <span class="spinner-dot"></span>
+                        <span class="spinner-dot"></span>
+                    </div>
+                    Load more replies
+
+                </a>
+            )}
         </>
     );
 };

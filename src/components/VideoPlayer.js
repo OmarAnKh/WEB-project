@@ -28,12 +28,14 @@ const VideoPlayer = ({ videoUrl, thumbnailUrl, publication_time, time }) => {
             )}
 
             {isPlaying && (
-                <ReactPlayer
-                    url={videoUrl}
-                    playing={isPlaying}
-                    controls
-                    width={416}
-                />
+                <div >
+                    <ReactPlayer
+                        url={videoUrl}
+                        playing={isPlaying}
+                        controls
+                        width={394}
+                    />
+                </div>
             )}
         </div>
     );
