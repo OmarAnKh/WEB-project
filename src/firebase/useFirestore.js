@@ -16,10 +16,10 @@ export const useFireStore = (collectioName) => {
 
 
     const editData = async (id, editOBJ, newValue) => {
-        const docRef = doc(db, collectioName, id);
+        const docRef = doc(db, collectioName, id)
         await updateDoc(docRef, {
             [editOBJ]: newValue
-        });
+        })
     }
 
     const deleteData = async (id) => {

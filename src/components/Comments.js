@@ -3,44 +3,28 @@ import './OmarCompStyle.css'
 import { useState } from "react";
 import { useFireStore } from "../firebase/useFirestore";
 const Comments = (props) => {
-    const [showReplyInput, setShowReplyInput] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const [replyContent, setReplyContent] = useState('');
-    const [commentLikeState, setcommentLikeState] = useState(true);
-    const [replyLikeState, setreplyLikeState] = useState(true);
+
     const { addCommentsLike, addReply, addReplysLike } = useFireStore(props.comments_section)
-    const toggleReplyInput = () => {
-        setShowReplyInput(!showReplyInput);
+    const handleClose = () => {
+        setShowModal(false);
+        setReplyContent('');
+
     };
-    const handleReplyContentChange = (e) => {
-        setReplyContent(e.target.value);
-    };
+    const handleShow = () => setShowModal(true);
     function addNewReply(index) {
         if (replyContent.trim() !== '') {
             addReply(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, replyContent);
             setReplyContent('');
-            setShowReplyInput(false);
+            setShowModal(false);
         }
     }
     function addCommentLike(index) {
-        if (commentLikeState) {
-            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1);
-            setcommentLikeState(false);
-        } else {
-            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1);
-            setcommentLikeState(true);
-        }
+        addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1);
     }
     function addReplyLike(prelyIndex, commentIndex) {
-
-        if (replyLikeState) {
-
-            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
-            setreplyLikeState(false);
-        } else {
-            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1)
-            setreplyLikeState(true);
-        }
-
+        addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
     }
     const { visibleComments, setVisibleComments } = props;
     const comments = props?.comments
@@ -94,7 +78,7 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
-                                                            <a className="nav-link" href="#!" onClick={toggleReplyInput}>
+                                                            <a className="nav-link" href="#!" onClick={handleShow}>
                                                                 {" "}
                                                                 Reply
                                                             </a>
@@ -106,12 +90,58 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                     </ul>
-                                                    {showReplyInput && (
-                                                        <div className="ms-2">
-                                                            <input type="text" className="input_reply" placeholder="Type your reply..." value={replyContent} onChange={handleReplyContentChange} />
-                                                            <button className="btn btn-primary text-white" style={{ margin: "10px" }} onClick={() => addNewReply(comment.index)}>Submit Reply</button>
+
+
+
+
+
+
+
+
+
+                                                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
+                                                        <div className="modal-dialog" role="document">
+                                                            <div className="modal-content">
+                                                                <div className="modal-header">
+                                                                    <h5 className="modal-title">Add reply</h5>
+                                                                    <button type="button" className="btn btn-danger text-white" style={{ width: "20%" }} onClick={handleClose} aria-label="Close">
+                                                                        <span aria-hidden="true" style={{ fontSize: "25px" }}>&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div className="modal-body">
+                                                                    <form>
+                                                                        <div className="form-group">
+
+                                                                            <input type="text"
+                                                                                className="input_reply text-black"
+                                                                                placeholder="Write you reply here"
+                                                                                style={{ color: "white" }}
+                                                                                autocomplete="off"
+                                                                                onChange={(e) => setReplyContent(e.target.value)} />
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div className="modal-footer">
+                                                                    <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                                                                        Close
+                                                                    </button>
+                                                                    <button className="btn btn-primary text-white" style={{ margin: "10px" }} onClick={
+                                                                        () => addNewReply(comment.index)
+                                                                    }>Submit Reply</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    )}
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
                                                 </div>
                                             </div>
 
@@ -126,11 +156,11 @@ const Comments = (props) => {
 
                 ))}
                 {visibleComments < videoComments?.length && (
-                    <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadMoreComments}>
-                        <div class="spinner-dots me-2">
-                            <span class="spinner-dot"></span>
-                            <span class="spinner-dot"></span>
-                            <span class="spinner-dot"></span>
+                    <a href="#!" role="button" className="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadMoreComments}>
+                        <div className="spinner-dots me-2">
+                            <span className="spinner-dot"></span>
+                            <span className="spinner-dot"></span>
+                            <span className="spinner-dot"></span>
                         </div>
                         Load more replies
                     </a>

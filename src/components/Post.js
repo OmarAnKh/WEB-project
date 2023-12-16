@@ -51,14 +51,30 @@ const Post = (props) => {
 
     }
 
-    function postComment() {
-        updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
-        const postId = allVideos[id]?.id;
-        if (postId) {
-            editData(postId, "comments", data?.comments + 1);
+    function postComment(e) {
+        if (e.key === 'Enter' && commentContent) {
+            updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
+            const postId = allVideos[id]?.id;
+            if (postId) {
+                editData(postId, "comments", data?.comments + 1);
+            }
+            setCommentColor("blue")
+            setCommentWord("commented")
+            setCommentContent('')
         }
-        setCommentColor("blue")
-        setCommentWord("commented")
+    }
+    function onClickPostComment() {
+
+        if (commentContent) {
+            updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
+            const postId = allVideos[id]?.id;
+            if (postId) {
+                editData(postId, "comments", data?.comments + 1);
+            }
+            setCommentColor("blue")
+            setCommentWord("commented")
+            setCommentContent('')
+        }
     }
     if (data) {
         return (
@@ -184,21 +200,22 @@ const Post = (props) => {
                                                     value={commentContent}
                                                     onChange={(e) => setCommentContent(e.target.value)}
                                                     placeholder="Write a comment"
+                                                    onKeyDown={(e) => postComment(e)}
                                                 />
                                                 <div className="float-end mt-2 pt-1">
                                                     <button
                                                         type="button"
                                                         className="btn btn-primary text-white"
                                                         style={{ color: "gray" }}
-                                                        onClick={postComment}
+                                                        onClick={onClickPostComment}
                                                     >
                                                         Post comment
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <Comments comments={props.comments}  state={commentsState} comments_section={props.comments_section} id={id} visibleComments={visibleComments} setVisibleComments={setVisibleComments} />
+
+                                        <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} visibleComments={visibleComments} setVisibleComments={setVisibleComments} />
                                     </div>
                                 </div>
                             </div>
