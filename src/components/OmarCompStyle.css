@@ -12754,22 +12754,28 @@ a {
     border-radius: 50%;
     width: 4px;
 }
+
 .text-secondary {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
 }
+
 .btn-link {
     padding: 0;
 }
+
 .btn {
     outline: 0;
 }
-.btn-sm, .btn-group-sm > .btn {
+
+.btn-sm,
+.btn-group-sm>.btn {
     --bs-btn-padding-y: 0.4rem;
     --bs-btn-padding-x: 0.8rem;
     --bs-btn-font-size: 0.8125rem;
     --bs-btn-border-radius: 0.2rem;
 }
+
 .btn-link {
     --bs-btn-font-weight: 500;
     --bs-btn-color: var(--bs-link-color);
@@ -12785,9 +12791,19 @@ a {
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     text-decoration: none;
 }
+
 .input_reply {
     border: none;
     border-bottom: 2px solid rgb(38, 94, 150);
     outline: none;
     background-color: rgba(0, 0, 0, 0);
+}
+
+.input_reply:focus::placeholder {
+    color: transparent;
+
+}
+
+.input_reply::placeholder {
+    transition: linear 0.5s;
 }
