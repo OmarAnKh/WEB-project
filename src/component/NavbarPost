@@ -1,0 +1,13 @@
+
+
+
+const PostNavbar =()=> {
+    return (
+<i className="bi bi-megaphone-fill"></i>
+
+      )
+
+    
+    
+}
+export default PostNavbar
