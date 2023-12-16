@@ -5,8 +5,7 @@ import { useFireStore } from "../firebase/useFirestore";
 const Comments = (props) => {
     const [showModal, setShowModal] = useState(false);
     const [replyContent, setReplyContent] = useState('');
-    const [commentLikeState, setcommentLikeState] = useState(true);
-    const [replyLikeState, setreplyLikeState] = useState(true);
+
     const { addCommentsLike, addReply, addReplysLike } = useFireStore(props.comments_section)
     const handleClose = () => {
         setShowModal(false);
@@ -22,25 +21,10 @@ const Comments = (props) => {
         }
     }
     function addCommentLike(index) {
-        if (commentLikeState) {
-            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1);
-            setcommentLikeState(false);
-        } else {
-            addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1);
-            setcommentLikeState(true);
-        }
+        addCommentsLike(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1);
     }
     function addReplyLike(prelyIndex, commentIndex) {
-
-        if (replyLikeState) {
-
-            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
-            setreplyLikeState(false);
-        } else {
-            addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, -1)
-            setreplyLikeState(true);
-        }
-
+        addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
     }
     const { visibleComments, setVisibleComments } = props;
     const comments = props?.comments
