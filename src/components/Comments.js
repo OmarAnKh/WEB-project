@@ -26,18 +26,17 @@ const Comments = (props) => {
     function addReplyLike(prelyIndex, commentIndex) {
         addReplysLike(prelyIndex, commentIndex, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, 1)
     }
-    const { visibleComments, setVisibleComments } = props;
+    const { amountOfComments, setAmountOfComments } = props;
     const comments = props?.comments
     const videoComments = comments[props?.id]?.comments;
     const loadMoreComments = () => {
-        setVisibleComments((prevCount) => prevCount + 1);
+        setAmountOfComments((prevCount) => prevCount + 1);
     };
-    if (props.state) {
+    if (props.state ) {
         return (
             <section className="gradient-custom">
-
-                {videoComments?.slice(0, visibleComments).map((comment) => (
-                    <div className="container my-3 " key={props.id}>
+                {videoComments?.slice(0, amountOfComments).map((comment) => (
+                    <div className="container my-3 " key={props?.id}>
                         <div className="row d-flex ">
                             <div className="">
                                 <div className="card">
@@ -48,7 +47,7 @@ const Comments = (props) => {
                                                     <a href="#!">
                                                         <img
                                                             className="avatar-img rounded-circle"
-                                                            src={comment.comment.photo}
+                                                            src={comment.comment?.photo}
                                                             alt=""
                                                             width="50"
                                                             height="50"
@@ -60,21 +59,21 @@ const Comments = (props) => {
                                                         <div className="d-flex justify-content-between">
                                                             <h6 className="mb-1">
                                                                 {" "}
-                                                                <a href="#!"> {comment.comment.author} </a>
+                                                                <a href="#!"> {comment.comment?.author} </a>
                                                             </h6>
-                                                            <small className="ms-2">{comment.comment.time}</small>
+                                                            <small className="ms-2">{comment.comment?.time}</small>
                                                         </div>
                                                         <p className="small mb-0">
-                                                            {comment.comment.content}.
+                                                            {comment.comment?.content}.
                                                         </p>
                                                     </div>
                                                     <ul className="nav nav-divider py-2 small">
                                                         <li className="nav-item">
                                                             <a className="nav-link" href="#!" onClick={() => {
-                                                                addCommentLike(comment.index)
+                                                                addCommentLike(comment?.index)
                                                             }}>
                                                                 {" "}
-                                                                Like {comment.comment.likes} &bull;
+                                                                Like {comment.comment?.likes} &bull;
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
@@ -90,15 +89,6 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                     </ul>
-
-
-
-
-
-
-
-
-
                                                     <div className="modal" tabIndex="-1" role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
                                                         <div className="modal-dialog" role="document">
                                                             <div className="modal-content">
@@ -116,7 +106,7 @@ const Comments = (props) => {
                                                                                 className="input_reply text-black"
                                                                                 placeholder="Write you reply here"
                                                                                 style={{ color: "white" }}
-                                                                                autocomplete="off"
+                                                                                autoComplete="off"
                                                                                 onChange={(e) => setReplyContent(e.target.value)} />
                                                                         </div>
                                                                     </form>
@@ -132,19 +122,8 @@ const Comments = (props) => {
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
-
-
-
                                                 </div>
                                             </div>
-
                                             <Replies data={comment.replies} index={comment.index} addReplyLike={addReplyLike} />
                                         </div>
                                     </div>
@@ -155,7 +134,7 @@ const Comments = (props) => {
                     </div>
 
                 ))}
-                {visibleComments < videoComments?.length && (
+                {amountOfComments < videoComments?.length && (
                     <a href="#!" role="button" className="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadMoreComments}>
                         <div className="spinner-dots me-2">
                             <span className="spinner-dot"></span>
