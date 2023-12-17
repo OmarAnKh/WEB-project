@@ -4,7 +4,7 @@ import Comments from "./Comments";
 
 import './OmarCompStyle.css'
 const Post = (props) => {
-    const [visibleComments, setVisibleComments] = useState(1);
+    const [amountOfComments, setAmountOfComments] = useState(1);
     const [commentContent, setCommentContent] = useState("");
     const data = props.video
     const collection_name = props.collection_name
@@ -215,7 +215,7 @@ const Post = (props) => {
                                             </div>
                                         </div>
 
-                                        <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} visibleComments={visibleComments} setVisibleComments={setVisibleComments} />
+                                        <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} amountOfComments={amountOfComments} setAmountOfComments={setAmountOfComments} />
                                     </div>
                                 </div>
                             </div>
