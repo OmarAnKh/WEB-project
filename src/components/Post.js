@@ -54,10 +54,6 @@ const Post = (props) => {
     function postComment(e) {
         if (e.key === 'Enter' && commentContent) {
             updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
-            const postId = allVideos[id]?.id;
-            if (postId) {
-                editData(postId, "comments", data?.comments + 1);
-            }
             setCommentColor("blue")
             setCommentWord("commented")
             setCommentContent('')
@@ -67,10 +63,6 @@ const Post = (props) => {
 
         if (commentContent) {
             updateArray(id, props.comments[id]?.id, props.comments_section, props.comments[id]?.comments, commentContent)
-            const postId = allVideos[id]?.id;
-            if (postId) {
-                editData(postId, "comments", data?.comments + 1);
-            }
             setCommentColor("blue")
             setCommentWord("commented")
             setCommentContent('')
@@ -194,13 +186,13 @@ const Post = (props) => {
 
                                             <div className="form-outline w-100">
                                                 <textarea
-                                                    className="form-control"
+                                                    className="form-control my-textarea"
                                                     id="textAreaExample"
                                                     rows={2}
-                                                    style={{ background: "#fff" }}
+                                                    style={{ background: "#fff", color:"black"}}
                                                     value={commentContent}
                                                     onChange={(e) => setCommentContent(e.target.value)}
-                                                    placeholder="Write a comment"
+                                                    placeholder="Add a comment..."
                                                     onKeyDown={(e) => postComment(e)}
                                                 />
                                                 <div className="float-end mt-2 pt-1">

@@ -8,10 +8,10 @@ const PostPageLayout = () => {
     const { collection_name } = useParams('collection_name')
     const { comments_section } = useParams('comments_section')
     const { id } = useParams('id')
-    const temp = useFireStore(comments_section).data
+    const comments = useFireStore(comments_section).data
     const { data } = useFireStore(collection_name)
 
-    const comments = temp
+    
     const video = data[id]
 
     return (

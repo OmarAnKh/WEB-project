@@ -12807,3 +12807,11 @@ a {
 .input_reply::placeholder {
     transition: linear 0.5s;
 }
+
+.my-textarea {
+    border: none;
+    border-bottom: 2px solid rgb(38, 94, 150);
+    outline: none!important;
+    background-color: rgba(0, 0, 0, 0);
+}
+
