@@ -1,13 +1,15 @@
 import './OmarCompStyle.css'
 import { useState } from 'react';
 const Replies = (props) => {
-    
+
     const test = props.data;
     const [visibleReplies, setVisibleReplies] = useState(1);
     const loadMoreReplies = () => {
-        setVisibleReplies((prevCount) => prevCount + 1);
+        setVisibleReplies((prevCount) => prevCount + 2);
     };
-
+    const loadLessReplies = () => {
+        setVisibleReplies((prevCount) => prevCount - 2);
+    };
     return (
         <>
 
@@ -51,11 +53,6 @@ const Replies = (props) => {
                                             Like {reply.likes} &bull;
                                         </a>
                                     </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#!" >
-                                            Reply
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -74,6 +71,19 @@ const Replies = (props) => {
 
                 </a>
             )}
+            {visibleReplies >= props.data?.length && props.data?.length !== 0 && (
+
+                <a href="#!" role="button" className="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={loadLessReplies}>
+                    <div className="spinner-dots me-2">
+                        <span className="spinner-dot"></span>
+                        <span className="spinner-dot"></span>
+                        <span className="spinner-dot"></span>
+                    </div>
+                    Show less replies
+
+                </a>
+            )}
+
         </>
     );
 };
