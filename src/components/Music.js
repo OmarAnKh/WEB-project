@@ -63,7 +63,7 @@ const Music = () => {
                                             onClick={() => playVideo(video.id)}
                                             style={{ top: "45%", transform: "translate(-50%, -50%)" }}
                                         >
-                                            <a href="?#" className="icon-md bg-danger text-white rounded-circle">
+                                            <a href="#" onClick={(e) => { e.preventDefault(); }} className="icon-md bg-danger text-white rounded-circle">
                                                 <i className="bi bi-play-fill fs-5"></i>
                                             </a>
                                         </div>
