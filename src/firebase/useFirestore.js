@@ -58,10 +58,12 @@ export const useFireStore = (collectioName) => {
         });
     }
 
-    const addReply = async (replyIndex, index, id, collectionName, Doc, replyContent = "", replyAuthor = "anonymous", replyTime = "now", replyPhoto = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", replyLikes = 0, replyViews = 0) => {
+    const addReply = async (replyIndex, id, collectionName, Doc, replyContent = "", replyAuthor = "anonymous", replyTime = "now", replyPhoto = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", replyLikes = 0, replyViews = 0) => {
         let updatedDoc = [...Doc];
+
         let updatedReplies = [...updatedDoc[replyIndex].replies];
         console.log(updatedDoc)
+        console.log(updatedReplies)
         updatedReplies.push({
             content: replyContent,
             author: replyAuthor,
@@ -76,6 +78,7 @@ export const useFireStore = (collectioName) => {
             ...updatedDoc[replyIndex],
             replies: updatedReplies
         };
+
 
         const ref = doc(db, collectionName, id);
         await updateDoc(ref, {

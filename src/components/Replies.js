@@ -5,10 +5,10 @@ const Replies = (props) => {
     const test = props.data;
     const [visibleReplies, setVisibleReplies] = useState(1);
     const loadMoreReplies = () => {
-        setVisibleReplies((prevCount) => prevCount + 2);
+        setVisibleReplies((prevCount) => prevCount + 1);
     };
     const loadLessReplies = () => {
-        setVisibleReplies((prevCount) => prevCount - 2);
+        setVisibleReplies((prevCount) => prevCount - 1);
     };
     return (
         <>
@@ -17,10 +17,10 @@ const Replies = (props) => {
 
                 test?.slice(0, visibleReplies).map((reply, index) => (
 
-                    <div key={index}>
+                    <div key={reply.index} style={{marginLeft:"6%",width:"70%"}}>
                         <div className="d-flex"></div>
 
-                        <div className="d-flex" key={index}>
+                        <div className="d-flex" key={reply.index}>
                             <div className="avatar avatar-xs">
                                 <a href="#!">
                                     <img
@@ -50,7 +50,7 @@ const Replies = (props) => {
                                         <a className="nav-link" href="#!" onClick={() => {
                                             props.addReplyLike(reply.index, props.index)
                                         }}>
-                                            Like {reply.likes} &bull;
+                                            Like {reply.likes} 
                                         </a>
                                     </li>
                                 </ul>

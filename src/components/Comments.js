@@ -3,21 +3,24 @@ import './OmarCompStyle.css'
 import { useState } from "react";
 import { useFireStore } from "../firebase/useFirestore";
 const Comments = (props) => {
-    const [showModal, setShowModal] = useState(false);
+    const [showReplyInput, setShowReplyInput] = useState(false);
     const [replyContent, setReplyContent] = useState('');
-
+    const [replyIndex, setReplyIndex] = useState(null);
     const { addCommentsLike, addReply, addReplysLike } = useFireStore(props.comments_section)
-    const handleClose = () => {
-        setShowModal(false);
-        setReplyContent('');
-
+    const toggleReplyInput = (index) => {
+        setReplyIndex(replyIndex === index ? null : index);
+        setShowReplyInput(!showReplyInput);
     };
-    const handleShow = () => setShowModal(true);
+    const handleReplyContentChange = (e) => {
+        setReplyContent(e.target.value);
+    };
+
+
     function addNewReply(index) {
         if (replyContent.trim() !== '') {
-            addReply(index, props.id, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, replyContent);
+            addReply(index, props.comments[props.id]?.id, props.comments_section, props.comments[props.id]?.comments, replyContent);
             setReplyContent('');
-            setShowModal(false);
+            setShowReplyInput(!showReplyInput)
         }
     }
     function addCommentLike(index) {
@@ -32,17 +35,17 @@ const Comments = (props) => {
     const loadMoreComments = () => {
         setAmountOfComments((prevCount) => prevCount + 1);
     };
-    if (props.state ) {
+    if (props.state) {
         return (
             <section className="gradient-custom">
                 {videoComments?.slice(0, amountOfComments).map((comment) => (
-                    <div className="container my-3 " key={props?.id}>
+                    <div className="container my-3 " key={comment.index} >
                         <div className="row d-flex ">
                             <div className="">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="row">
-                                            <div className="d-flex position-relative">
+                                            <div className="d-flex position-relative" style={{ width: "70%" }}>
                                                 <div className="avatar avatar-xs">
                                                     <a href="#!">
                                                         <img
@@ -77,9 +80,9 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
-                                                            <a className="nav-link" href="#!" onClick={handleShow}>
+                                                            <a className="nav-link" href="#!" onClick={() => { toggleReplyInput(comment.index) }}>
                                                                 {" "}
-                                                                Reply
+                                                                Reply &bull;
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
@@ -89,39 +92,14 @@ const Comments = (props) => {
                                                             </a>
                                                         </li>
                                                     </ul>
-                                                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: showModal ? 'block' : 'none' }}>
-                                                        <div className="modal-dialog" role="document">
-                                                            <div className="modal-content">
-                                                                <div className="modal-header">
-                                                                    <h5 className="modal-title">Add reply</h5>
-                                                                    <button type="button" className="btn btn-danger text-white" style={{ width: "20%" }} onClick={handleClose} aria-label="Close">
-                                                                        <span aria-hidden="true" style={{ fontSize: "25px" }}>&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div className="modal-body">
-                                                                    <form>
-                                                                        <div className="form-group">
 
-                                                                            <input type="text"
-                                                                                className="input_reply text-black"
-                                                                                placeholder="Write you reply here"
-                                                                                style={{ color: "white" }}
-                                                                                autoComplete="off"
-                                                                                onChange={(e) => setReplyContent(e.target.value)} />
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div className="modal-footer">
-                                                                    <button type="button" className="btn btn-secondary" onClick={handleClose}>
-                                                                        Close
-                                                                    </button>
-                                                                    <button className="btn btn-primary text-white" style={{ margin: "10px" }} onClick={
-                                                                        () => addNewReply(comment.index)
-                                                                    }>Submit Reply</button>
-                                                                </div>
-                                                            </div>
+
+                                                    {showReplyInput && replyIndex === comment.index && (
+                                                        <div className="ms-2">
+                                                            <input type="text" className="input_reply" placeholder="Type your reply..." value={replyContent} onChange={handleReplyContentChange} />
+                                                            <button className="btn btn-primary text-white" style={{ margin: "10px" }} onClick={() => addNewReply(comment.index)}>Submit Reply</button>
                                                         </div>
-                                                    </div>
+                                                    )}
                                                 </div>
                                             </div>
                                             <Replies data={comment.replies} index={comment.index} addReplyLike={addReplyLike} />
