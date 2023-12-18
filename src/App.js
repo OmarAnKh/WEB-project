@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/PostPageLayout/:id/:collection_name/:comments_section' element={<PostPageLayout />} />
-        <Route path="/" element={<MainPageLayout/>} />
+        <Route path="/" element={<MainPageLayout />} />
       </Routes>
 
     </div>
