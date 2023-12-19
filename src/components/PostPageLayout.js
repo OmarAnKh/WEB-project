@@ -11,7 +11,7 @@ const PostPageLayout = () => {
     const comments = useFireStore(comments_section).data
     const { data } = useFireStore(collection_name)
 
-    
+
     const video = data[id]
 
     return (
