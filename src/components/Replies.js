@@ -17,7 +17,7 @@ const Replies = (props) => {
 
                 test?.slice(0, visibleReplies).map((reply, index) => (
 
-                    <div key={reply.index} style={{marginLeft:"6%",width:"70%"}}>
+                    <div key={reply.index} style={{ marginLeft: "6%", width: "70%" }}>
                         <div className="d-flex"></div>
 
                         <div className="d-flex" key={reply.index}>
@@ -50,7 +50,7 @@ const Replies = (props) => {
                                         <a className="nav-link" href="#!" onClick={() => {
                                             props.addReplyLike(reply.index, props.index)
                                         }}>
-                                            Like {reply.likes} 
+                                            Like {reply.likes}
                                         </a>
                                     </li>
                                 </ul>

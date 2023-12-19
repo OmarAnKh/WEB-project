@@ -35,6 +35,11 @@ const Comments = (props) => {
     const loadMoreComments = () => {
         setAmountOfComments((prevCount) => prevCount + 1);
     };
+    const showLessComments = () => {
+        if (amountOfComments > 0) {
+            setAmountOfComments((prevCount) => prevCount - 1);
+        }
+    };
     if (props.state) {
         return (
             <section className="gradient-custom">
@@ -119,7 +124,18 @@ const Comments = (props) => {
                             <span className="spinner-dot"></span>
                             <span className="spinner-dot"></span>
                         </div>
-                        Load more replies
+                        Load more comments
+                    </a>
+                )}
+
+                {amountOfComments >= videoComments?.length && videoComments?.length !== 0 && (
+                    <a href="#!" role="button" className="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true" onClick={showLessComments}>
+                        <div className="spinner-dots me-2">
+                            <span className="spinner-dot"></span>
+                            <span className="spinner-dot"></span>
+                            <span className="spinner-dot"></span>
+                        </div>
+                        Show less comments
                     </a>
                 )}
             </section>
