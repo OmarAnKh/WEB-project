@@ -10,7 +10,7 @@ function RecommendedVideo() {
                 {data.map((item) => (
                     <div key={item.id} className="col-12">
                         <div className="card text-bg-dark">
-                            <img src={item.thumbnail} className="card-img" />
+                            <img src={item.thumbnail} className="card-img" alt="video thumbnail" />
                             <div className="card-img-overlay">
                                 <div className="d-flex align-items-center mb-3">
                                     <div className="avatar avatar-xxs me-2">

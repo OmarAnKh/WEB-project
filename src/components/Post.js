@@ -106,7 +106,7 @@ const Post = (props) => {
 
 
                                             <div>
-                                                <br></br>
+                                                
                                                 <h6 className="fw-bold text-primary mb-1">{
 
                                                     <p key={data.id} style={{ display: "inline" }}>
