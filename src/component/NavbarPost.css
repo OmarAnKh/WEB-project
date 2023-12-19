@@ -1,0 +1,53 @@
+
+ 
+    .button{
+        background-color: #0441aa; 
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 5px;
+        margin: 10px 10px;
+        cursor: pointer;
+    }
+ .maseeg{
+    background-color: #7d7f82; 
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 5px;
+        margin: 10px 10px;
+        cursor: pointer;
+  
+
+ }
+  
+  .img{
+    box-sizing: border-box;
+   
+    background-position:27px 27px;
+   
+    padding:10px 10px 10px 10px;
+    
+  }
+  
+  
+.all{
+    background-color: white;
+    
+}
+.nav-item{
+    padding-inline: 6px;
+    
+}
+
+.dropdown{
+   
+   margin-inline-end: 645px; 
+
+}

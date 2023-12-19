@@ -1,17 +1,16 @@
 import logo from './logo.svg';
-// import './App.css';
-// import TrendingCards from 'C:/Users/Najwa/OneDrive/Desktop/web/WEB-project/src/component/Page.js';
+import './App.css';
+import TrendingCards from 'C:/Users/Najwa/OneDrive/Desktop/web/WEB-project/src/component/Page.js';
 import React from 'react';
-import NavbarPost from './component/NavbarPost';
+import NavbarPost from './component/NavbarPost.js';
 
 
 function App() {
 
   return (
    <div>
-        {/* <NavbarPost/> */}
-
-       {/* <TrendingCards/>  */}
+        <NavbarPost/>
+       <TrendingCards/> 
 
      
       

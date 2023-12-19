@@ -8,3 +8,18 @@ margin-inline-start: 7px;
 margin-inline-end: 23px;
 
 } 
+.owner-photo{
+  border-radius: 50%;
+  width: 40px;
+ 
+}
+.card-text{
+  
+  
+ 
+  display: inline;
+  
+ 
+  
+  }
+ 
