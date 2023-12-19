@@ -26,7 +26,7 @@
 
 .card-title, .card-text, .small {
     margin: 0;
-   
+
 }
 
 .card-img {
@@ -43,7 +43,6 @@
 
 .card-title, .card-text, .small {
     margin: 0;
-   
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
