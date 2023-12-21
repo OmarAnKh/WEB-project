@@ -20,7 +20,7 @@ const PostPageLayout = () => {
             <div
                 className="card-footer  "
                 style={{ backgroundColor: "#F8F9FA", borderRadius: "10px", padding: "20px", border: "1px solid rgb(210,210,210)" }}>
-                <h3  > Related Videos</h3>
+                <h4 > Related Videos</h4>
                 <RelatedVideos />
             </div>
         </div>
