@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import TrendingCards from 'C:/Users/Najwa/OneDrive/Desktop/web/WEB-project/src/component/Page.js';
-import React from 'react';
-import NavbarPost from './component/NavbarPost.js';
+import MainPageLayout from './components/MainPageLayout'
 
-
+import PostPageLayout from './components/PostPageLayout';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
   return (
-   <div>
-        <NavbarPost/>
-       <TrendingCards/> 
+   <div className="App">
+      <Routes>
+        <Route path='/PostPageLayout/:id/:collection_name/:comments_section' element={<PostPageLayout />} />
+        <Route path="/" element={<MainPageLayout />} />
+      </Routes>
 
-     
-      
-  </div>
- 
-   
+    </div>
   );
 }
 
