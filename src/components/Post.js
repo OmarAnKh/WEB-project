@@ -106,7 +106,7 @@ const Post = (props) => {
 
 
                                             <div>
-                                                <br></br>
+                                                
                                                 <h6 className="fw-bold text-primary mb-1">{
 
                                                     <p key={data.id} style={{ display: "inline" }}>
@@ -207,7 +207,6 @@ const Post = (props) => {
                                                 </div>
                                             </div>
                                         </div>
-
                                         <Comments comments={props.comments} state={commentsState} comments_section={props.comments_section} id={id} amountOfComments={amountOfComments} setAmountOfComments={setAmountOfComments} />
                                     </div>
                                 </div>

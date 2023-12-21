@@ -7,7 +7,7 @@ const RelatedVideos = () => {
 
 
     return (
-        <div className="container my-5 py-5">
+        <div className="container my-4">
             <div className="row justify-content-center">
                 {data?.map((video) => (
                     <div className="col-md-4 mb-4" key={video.id} >
