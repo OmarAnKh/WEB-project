@@ -1,11 +1,10 @@
  .color{
     background-color: white;
-    width:23%;
-  height:400px;
   float: left;
-  margin-inline: 2px;
-margin-inline-start: 7px;
-margin-inline-end: 23px;
+ height: 300px;
+padding-bottom: 70px;
+
+
 
 } 
 .owner-photo{
@@ -22,4 +21,17 @@ margin-inline-end: 23px;
  
   
   }
+ .row{
+  
  
+  display: inline-flex ;
+
+  
+ }
+.col{
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 400px;
+}
+

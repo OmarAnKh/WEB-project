@@ -1,10 +1,8 @@
 import "./Page.css"
-import { Link } from 'react-router-dom';
 import TrendingCard from './TrendingCard';
 import "./TrendingCard.css";
 import { useFireStore } from "../firebase/useFirestore";
 import React, { useState } from 'react';
-
 
 const TrendingCards= (video) => {
   const { data } = useFireStore("Trending"); 
@@ -12,18 +10,12 @@ const TrendingCards= (video) => {
   const handleViewMoreClick = () => {
     setVisibleDataCount(prevCount => prevCount + 7); 
     
-    <Link
-        to={`/post/${video.index}/${video.collectionName}/${video.commentsSection}`}
-        className="card-title fs-6"
-      >
-        {video.title}
-      </Link>
   };
   
   
   return (
     
-<div>
+<div className="n">
     <div class="trending">
     <h3 class="t" >  Trending </h3>
    
@@ -35,12 +27,12 @@ const TrendingCards= (video) => {
 </div>
 </div>
 
-    <div>
+    
     {data.slice(0,visibleDataCount).map((video) => (
 
       
-  <TrendingCard
-  
+  <TrendingCard 
+ 
     key={video.id}
     link={video.link}
     owner={video.owner}
@@ -57,7 +49,8 @@ const TrendingCards= (video) => {
 ))}
 
     </div>
-    </div>
+   
+    
   );
 
 };
