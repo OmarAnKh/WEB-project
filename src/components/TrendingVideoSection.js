@@ -15,41 +15,57 @@ const TrendingCards = (video) => {
 
   return (
 
-    <div className="n">
-      <div class="trending">
-        <h3 class="t" >  Trending </h3>
+    <div className="container-xxl px-4">
+      <div className="d-flex justify-content-between">
+        <h3 >  Trending </h3>
+        <button onClick={handleViewMoreClick} type="button" className="btn btn-primary " >
+          View more video
+        </button></div>
+      <div className="row row-cols-1 row-cols-md-5 ">
+        {data.slice(0, 4).map((video) => (
 
-        <div class="btn-text-right">
 
-          <button onClick={handleViewMoreClick} type="button" className="btn btn-primary">
-            View more video
-          </button>
-        </div>
+          <TrendingCard
+
+            key={video.id}
+            link={video.link}
+            owner={video.owner}
+            photo={video.photo}
+            title={video.title}
+            views={video.views}
+            index={video.index}
+            collectionName={video.collection_name}
+            commentsSection={video.coments_section}
+
+          />
+
+
+        ))}
+
+        {data.slice(4, visibleDataCount).map((video) => (
+
+
+          <TrendingCard
+
+            key={video.id}
+            link={video.link}
+            owner={video.owner}
+            photo={video.photo}
+            title={video.title}
+            views={video.views}
+            index={video.index}
+            collectionName={video.collection_name}
+            commentsSection={video.coments_section}
+
+          />
+
+
+        ))}
+
+
+
       </div>
-
-
-      {data.slice(0, visibleDataCount).map((video) => (
-
-
-        <TrendingCard
-
-          key={video.id}
-          link={video.link}
-          owner={video.owner}
-          photo={video.photo}
-          title={video.title}
-          views={video.views}
-          index={video.index}
-          collectionName={video.collection_name}
-          commentsSection={video.coments_section}
-
-        />
-
-
-      ))}
-
     </div>
-
 
   );
 

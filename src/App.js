@@ -1,6 +1,5 @@
 import './App.css';
 import MainPageLayout from './components/MainPageLayout'
-
 import PostPageLayout from './components/PostPageLayout';
 import { Route, Routes } from 'react-router-dom';
 
