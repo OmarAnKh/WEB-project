@@ -18,6 +18,7 @@ function RecommendedVideo() {
                                             className="avatar-img rounded-circle"
                                             src={item.photo}
                                             alt="avatar"
+                                            style={{objectFit:"cover"}}
                                         />
                                     </div>
                                     <h6 className="mb-0">

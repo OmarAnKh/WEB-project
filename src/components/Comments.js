@@ -59,6 +59,7 @@ const Comments = (props) => {
                                                             alt=""
                                                             width="50"
                                                             height="50"
+                                                            style={{objectFit:"cover"}}
                                                         />
                                                     </a>
                                                 </div>
