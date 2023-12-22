@@ -16,7 +16,7 @@ const Trending = (video) => {
               src={video.link}
             ></iframe>
             <div style={{ padding: '16px' }}>
-              <h6 className="card-title">
+              <h6 className="card-title-trending">
                 <Link
                   to={`/PostPageLayout/${video.index}/${video.collectionName}/${video.commentsSection} `}
                   className="card-text"
