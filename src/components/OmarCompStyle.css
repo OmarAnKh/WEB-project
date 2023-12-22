@@ -12811,7 +12811,26 @@ a {
 .my-textarea {
     border: none;
     border-bottom: 2px solid rgb(38, 94, 150);
-    outline: none!important;
+    outline: none !important;
     background-color: rgba(0, 0, 0, 0);
 }
 
+.nav-item .nav-link:hover {
+    color: blue !important;
+}
+
+.icon-item .nav-link:hover {
+    background-color: blue !important;
+}
+
+.play-button-trailer {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    font-size: 1.5rem;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

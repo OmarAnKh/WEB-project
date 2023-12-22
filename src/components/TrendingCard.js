@@ -5,11 +5,12 @@ import './TrendingCard.css';
 const Trending = (video) => {
   { console.log(video) }
   return (
-    <div className="col-md-3 p-2"> {/* Update the class to col-md-3 */}
+    <div className="col-md-3 p-2">
       <div className="card" style={{ borderRadius: '12px', height: '100%' }}>
         <div className="card-body">
           <div className="row justify-content-center">
             <iframe
+              title={video.title}
               width="100%"
               height="80%"
               src={video.link}

@@ -1,5 +1,5 @@
 import { useFireStore } from "../firebase/useFirestore";
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "./RelatedVideoPlayer";
 import './OmarCompStyle.css'
 import { Link } from "react-router-dom";
 const RelatedVideos = () => {
