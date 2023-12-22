@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFireStore } from "../firebase/useFirestore";
 import Comments from "./Comments";
-
+import './PostStyle.css'
 import './OmarCompStyle.css'
 const Post = (props) => {
     const [amountOfComments, setAmountOfComments] = useState(1);
@@ -106,7 +106,7 @@ const Post = (props) => {
 
 
                                             <div>
-                                                
+
                                                 <h6 className="fw-bold text-primary mb-1">{
 
                                                     <p key={data.id} style={{ display: "inline" }}>
@@ -135,7 +135,7 @@ const Post = (props) => {
                                                             <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15" />
                                                         </svg>
                                                         <div className="mb-0" style={{ fontSize: "17px", color: "gray", display: "inline" }}> {commentWord}<div key={data.id} style={{ display: "inline-block" }} >({
-                                                            props.comments[id].comments?.length ? (props.comments[id]?.comments.length):0 })</div>
+                                                            props.comments[id].comments?.length ? (props.comments[id]?.comments.length) : 0})</div>
 
                                                         </div>
                                                     </button>
@@ -220,7 +220,13 @@ const Post = (props) => {
     }
     else {
         return (
-            <div>Loading </div>
+            <div><div className="spinner" style={{marginLeft:"45%"}}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div> </div>
         )
     }
 }

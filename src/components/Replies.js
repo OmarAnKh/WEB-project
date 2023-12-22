@@ -29,6 +29,7 @@ const Replies = (props) => {
                                         alt=""
                                         width="40"
                                         height="40"
+                                        style={{objectFit:"cover"}}
                                     />
                                 </a>
                             </div>

@@ -23,7 +23,7 @@ const PostPageLayout = () => {
                 <Post video={video} collection_name={collection_name} id={id} comments={comments} comments_section={comments_section} />
                 <div
                     className="card-footer  "
-                    style={{ backgroundColor: "#F8F9FA", borderRadius: "10px", padding: "20px", border: "1px solid rgb(210,210,210)" }}>
+                    style={{ backgroundColor: "#F8F9FA", borderRadius: "10px", padding: "20px", border: "1px solid rgb(210,210,210)", marginTop: "20px" }}>
                     <h4 > Related Videos</h4>
                     <RelatedVideos />
                 </div>

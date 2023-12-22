@@ -18,11 +18,12 @@ const RelatedVideos = () => {
                             <div className="card-footer bg-white" style={{ border: "0" }}>
                                 <div className="d-flex align-items-center">
                                     <img
-                                        className="rounded-circle shadow-1-strong me-2"
+                                        className="rounded-circle shadow-1-strong me-2 "
                                         src={video.photo}
                                         alt="avatar"
                                         width={40}
                                         height={40}
+                                        style={{objectFit:"cover"}}
                                     />
                                     <div className="card-body">
                                         <b className="card-title" style={{ fontSize: "17px", marginBottom: 0, marginTop: "5px" }}>

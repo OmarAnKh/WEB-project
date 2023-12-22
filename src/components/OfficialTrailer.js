@@ -47,6 +47,7 @@ const OfficialTrailer = () => {
                                     alt="avatar"
                                     width={40}
                                     height={40}
+                                    style={{objectFit:"cover"}}
                                 />
                                 <b className="card-title" style={{ fontSize: "17px", marginBottom: 0, marginTop: "5px" }}>
                                     {video?.owner}
