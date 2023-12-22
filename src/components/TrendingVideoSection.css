@@ -1,0 +1,32 @@
+.trending {
+
+  margin-top: 0px;
+
+
+}
+
+.btn-text-right {
+  margin-top: -45px;
+  text-align: right;
+  padding-bottom: 40px;
+  margin-inline-end: 10%;
+  
+}
+
+.t {
+  padding-top: 30px;
+  margin-inline-start: 10%;
+  
+}
+
+.n {
+  background-color: rgb(245, 245, 239);
+  
+ 
+
+}
+.l{
+  display: inline-flex;
+ width: 100%;
+margin-inline-start: 10%;
+}

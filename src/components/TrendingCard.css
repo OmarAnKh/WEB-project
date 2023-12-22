@@ -1,0 +1,42 @@
+ .color {
+   background-color: white;
+   float:left;
+   height: 300px;
+   padding-bottom: 70px;
+   
+ }
+
+ .owner-photo {
+   border-radius: 50%;
+   width: 30px;
+
+ }
+
+ .card-text {
+
+
+
+   display: inline;
+   font-size: small;
+
+
+ }
+ .card-views{
+  font-size:13px;
+  margin-left:20px;
+  
+}
+
+ .card-title{
+  font-size: 12px;
+  
+ }
+ 
+.card-body{
+  flex-direction: column;
+
+}
+
+
+
+
