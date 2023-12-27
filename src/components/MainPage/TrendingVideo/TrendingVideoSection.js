@@ -4,7 +4,7 @@ import "./TrendingCard.css";
 import { useFireStore } from "../../../firebase/useFirestore";
 import React, { useState } from 'react';
 
-const TrendingCards = (video) => {
+const TrendingVideoSection = () => {
   const { data } = useFireStore("Trending");
   const [visibleDataCount, setVisibleDataCount] = useState(6);
   const handleViewMoreClick = () => {
@@ -22,7 +22,7 @@ const TrendingCards = (video) => {
           View more video
         </button></div>
       <div className="row row-cols-1 row-cols-md-5 ">
-        {data.slice(0, 4).map((video) => (
+        {data.slice(0, visibleDataCount).map((video) => (
 
 
           <TrendingCard
@@ -36,27 +36,6 @@ const TrendingCards = (video) => {
             index={video.index}
             collectionName={video.collection_name}
             commentsSection={video.coments_section}
-
-          />
-
-
-        ))}
-
-        {data.slice(4, visibleDataCount).map((video) => (
-
-
-          <TrendingCard
-
-            key={video.id}
-            link={video.link}
-            owner={video.owner}
-            photo={video.photo}
-            title={video.title}
-            views={video.views}
-            index={video.index}
-            collectionName={video.collection_name}
-            commentsSection={video.coments_section}
-
           />
 
 
@@ -71,5 +50,5 @@ const TrendingCards = (video) => {
 
 };
 
-export default TrendingCards;
+export default TrendingVideoSection;
 

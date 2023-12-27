@@ -62,11 +62,8 @@ const PostNavbar = () => {
 
             <div className="d3">
               <li className="nav-item">
-                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Network</a>
-                <ul className="dropdown-menu">
-
-                </ul>
-              </li>
+    <a className="nav-link " aria-disabled="true">My Network</a>
+  </li>
             </div>
           </ul>
 

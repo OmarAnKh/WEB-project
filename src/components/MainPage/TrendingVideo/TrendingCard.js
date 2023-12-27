@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './TrendingCard.css';
 
-const Trending = (video) => {
-  { console.log(video) }
+const TrendingCard = (video) => {
+  
   return (
     <div className="col-md-3 p-2">
       <div className="card" style={{ borderRadius: '12px', height: '100%' }}>
@@ -15,8 +15,10 @@ const Trending = (video) => {
               height="80%"
               src={video.link}
             ></iframe>
+     
             <div style={{ padding: '16px' }}>
               <h6 className="card-title-trending">
+                
                 <Link
                   to={`/PostPageLayout/${video.index}/${video.collectionName}/${video.commentsSection} `}
                   className="card-text"
@@ -40,4 +42,4 @@ const Trending = (video) => {
   );
 };
 
-export default Trending;
+export default TrendingCard;
