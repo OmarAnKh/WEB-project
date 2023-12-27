@@ -46,7 +46,6 @@ const Comments = (props) => {
                 {videoComments?.slice(0, amountOfComments).map((comment) => (
                     <div className="container my-3 " key={comment.index} >
                         <div className="row d-flex ">
-                            <div className="">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="row">
@@ -67,7 +66,6 @@ const Comments = (props) => {
                                                     <div className="bg-light rounded-start-top-0 p-3 rounded">
                                                         <div className="d-flex justify-content-between">
                                                             <h6 className="mb-1">
-                                                                {" "}
                                                                 <a href="#!"> {comment.comment?.author} </a>
                                                             </h6>
                                                             <small className="ms-2">{comment.comment?.time}</small>
@@ -81,19 +79,18 @@ const Comments = (props) => {
                                                             <a className="nav-link" href="#!" onClick={() => {
                                                                 addCommentLike(comment?.index)
                                                             }}>
-                                                                {" "}
                                                                 Like {comment.comment?.likes} &bull;
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
                                                             <a className="nav-link" href="#!" onClick={() => { toggleReplyInput(comment.index) }}>
-                                                                {" "}
+                                                                
                                                                 Reply &bull;
                                                             </a>
                                                         </li>
                                                         <li className="nav-item">
                                                             <a className="nav-link" href="#!">
-                                                                {" "}
+                                                                
                                                                 View {comment.replies?.length} replies
                                                             </a>
                                                         </li>
@@ -114,8 +111,6 @@ const Comments = (props) => {
                                 </div>
                             </div>
                         </div>
-
-                    </div>
 
                 ))}
                 {amountOfComments < videoComments?.length && (

@@ -24,7 +24,7 @@ const PostNavbar = () => {
                 </button>
 
 
-                <form className="d-flex" f>
+                <form className="d-flex">
                         <input
                             className="form-control me-2"
                             type="search"
