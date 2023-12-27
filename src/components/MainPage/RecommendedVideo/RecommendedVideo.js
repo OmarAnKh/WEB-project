@@ -18,22 +18,18 @@ function RecommendedVideo() {
                                             className="avatar-img rounded-circle"
                                             src={item.photo}
                                             alt="avatar"
-                                            style={{ objectFit: "cover" }}
+                                            style={{objectFit:"cover"}}
                                         />
                                     </div>
                                     <h6 className="mb-0">
-                                        <a className="text-white" href="#!">
-                                            {item.owner}
-                                        </a>
-                                        <span className="ms-1 ms-sm-3 small text-white">
-                                            {item.views}
-                                        </span>
+                                        <span className="text-white">{item.owner} </span>
+                                        <span className="ms-1 ms-sm-3 small text-white">{item.views} </span>
                                     </h6>
                                 </div>
                                 <h1 className="card-title text-white" >{item.title}</h1>
                                 <p className="card-text text-white">{item.subtitle}</p>
                                 <Link to={`/PostPageLayout/${item.index}/${item.collection_name}/${item.comments_section} `} className="btn btn-primary" target="blank">
-                                    <i className="bi bi-file-earmark-play pe-1"></i>{item.title2}
+                                    <i className="bi bi-file-earmark-play pe-1"></i> {item.title2}
                                 </Link>
                             </div>
                         </div>

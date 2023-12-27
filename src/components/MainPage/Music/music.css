@@ -1,25 +1,20 @@
 .card {
-    height: 100%;
-  }
-  
-  .icon-md {
-  height: 2.5rem;
-  width: 2.5rem;
-  font-size: 0.9em;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  }
-  .heart {
-    cursor: pointer;
+  height: 100%;
+}
+
+.icon-md {
+height: 2.5rem;
+width: 2.5rem;
+font-size: 0.9em;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+
+.heart {
+cursor: pointer;
 }
 
 .heart.liked i {
-    color: red !important;
+color: red ;
 }

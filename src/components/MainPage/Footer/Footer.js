@@ -5,20 +5,17 @@ function Footer() {
             <div className="bg-body rounded p-4">
                 <div className="row text-dark">
                     <div className="col-lg-8">
-
                         <ul className="nav lh-1">
-                            <li style={{ marginRight: '15px', display: 'inline-block' }}>About</li>
-                            <li style={{ marginRight: '15px', display: 'inline-block' }}>Support</li>
-                            <li style={{ marginRight: '15px', display: 'inline-block' }}>Docs</li>
-                            <li style={{ marginRight: '15px', display: 'inline-block' }}>Privacy & Terms</li>
+                            <li className="nav-item me-3">About</li>
+                            <li className="nav-item me-3">Support</li>
+                            <li className="nav-item me-3">Docs</li>
+                            <li className="nav-item me-3">Privacy & Terms</li>
                         </ul>
-
                         <p className='mb-0 mt-4'>
                             © 2023 Webistica All rights reserved Supposing so be resolving breakfast am or perfectly. Is drew am hill from
                             me. Valley by oh twenty direct me so. Departure defective arranging rapturous did believe him all had supported.
                         </p>
                     </div>
-
                     <div className="col-lg-4 mt-4 mt-lg-0">
                         <div className="d-flex justify-content-lg-end">
                             <div className="mb-2">
@@ -48,5 +45,4 @@ function Footer() {
         </div>
     );
 }
-
 export default Footer;

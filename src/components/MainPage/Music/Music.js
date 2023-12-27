@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import "./Music.css";
 
-
 const Music = () => {
     const { data } = useFireStore("music");
     const [playingVideo, setPlayingVideo] = useState(null);
@@ -22,17 +21,15 @@ const Music = () => {
         return likedVideos.includes(id);
     };
 
-
     const playVideo = (id) => {
         setPlayingVideo(id);
     };
     return (
         <div className="container-xxl px-4">
-            <div className="row row-cols-2 py-4">
+            <div className=" py-4">
                 <div className="col">
-                    <h3 className="">Music</h3>
+                    <h3> Music </h3>
                 </div>
-                <div className="col text-end"></div>
             </div>
             <div className="row row-cols-1 row-cols-md-5">
                 {data.map((video) => (
@@ -55,27 +52,17 @@ const Music = () => {
                                             alt={video.title}
                                             width={"100%"}
                                             height={"100%"}
-                                            onClick={() => playVideo(video.id)}
-                                            style={{ cursor: "pointer", borderRadius: "10px 10px 0px 0px" }}
-                                        />
-                                        <div
-                                            className="play-icon position-absolute top-40 start-50 translate-middle"
-                                            onClick={() => playVideo(video.id)}
-                                            style={{ top: "45%", transform: "translate(-50%, -50%)" }}
-                                        >
-                                            <a href="!#" onClick={(e) => { e.preventDefault(); }} className="icon-md bg-danger text-white rounded-circle">
-                                                <i className="bi bi-play-fill fs-5"></i>
-                                            </a>
+                                            style={{ borderRadius: "10px 10px 0px 0px" }} />
+                                        <div className="play-icon position-absolute top-40 start-50 translate-middle" onClick={() => playVideo(video.id)} style={{ top: "45%", cursor: "pointer" }} >
+                                            <div className="icon-md bg-danger text-white rounded-circle"> <i className="bi bi-play-fill fs-5"></i> 
+                                            </div>
                                         </div>
                                         <div className="card-overlay position-absolute bottom-0 start-0 p-3 d-flex w-100">
                                             <span className="bg-dark bg-opacity-50 px-2 rounded text-white small">
                                                 {video.Duration}
                                             </span>
                                             <span
-                                                className={`bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto heart ${isVideoLiked(video.id) ? "liked" : ""
-                                                    }`}
-                                                onClick={() => addToFavorite(video.id)}
-                                            >
+                                                className={`bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto heart ${isVideoLiked(video.id) ? "liked" : ""}`} onClick={() => addToFavorite(video.id)} >
                                                 <i className="fa-solid fa-heart"></i>
                                             </span>
                                         </div>
@@ -95,5 +82,4 @@ const Music = () => {
         </div>
     );
 };
-
 export default Music;
