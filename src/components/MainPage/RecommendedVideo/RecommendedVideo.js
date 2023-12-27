@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import { Link } from 'react-router-dom';
 import "./recommendedvideo.css"
 function RecommendedVideo() {
@@ -18,7 +18,7 @@ function RecommendedVideo() {
                                             className="avatar-img rounded-circle"
                                             src={item.photo}
                                             alt="avatar"
-                                            style={{objectFit:"cover"}}
+                                            style={{ objectFit: "cover" }}
                                         />
                                     </div>
                                     <h6 className="mb-0">

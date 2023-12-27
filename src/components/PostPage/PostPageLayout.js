@@ -1,9 +1,9 @@
-import Post from "./Post"
-import RelatedVideos from "./RelatedVideos"
-import './OmarCompStyle.css'
+import Post from "./Post/Post"
+import RelatedVideos from "./RelatedVideo/RelatedVideos"
+import '../OmarCompStyle.css'
 import { useParams } from "react-router-dom"
-import { useFireStore } from "../firebase/useFirestore"
-import NavbarPost from './NavbarPost'
+import { useFireStore } from "../../firebase/useFirestore"
+import NavbarPost from './NavBar/PostNavbar'
 const PostPageLayout = () => {
     const { collection_name } = useParams('collection_name')
     const { comments_section } = useParams('comments_section')

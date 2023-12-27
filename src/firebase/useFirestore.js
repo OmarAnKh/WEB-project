@@ -54,7 +54,7 @@ export const useFireStore = (collectioName) => {
             comments
         });
     }
-const addReply = async (replyIndex, id, collectionName, Doc, replyContent = "", replyAuthor = "anonymous", replyTime = "now", replyPhoto = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", replyLikes = 0, replyViews = 0) => {
+    const addReply = async (replyIndex, id, collectionName, Doc, replyContent = "", replyAuthor = "anonymous", replyTime = "now", replyPhoto = "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg", replyLikes = 0, replyViews = 0) => {
         let updatedDoc = [...Doc];
 
         let updatedReplies = [...updatedDoc[replyIndex].replies];
@@ -79,7 +79,7 @@ const addReply = async (replyIndex, id, collectionName, Doc, replyContent = "", 
         await updateDoc(ref, {
             comments: updatedDoc
         });
-   }
+    }
     const addCommentsLike = async (replyIndex, index, id, collectionName, Doc, amount) => {
         let comments = Doc
 
@@ -90,7 +90,7 @@ const addReply = async (replyIndex, id, collectionName, Doc, replyContent = "", 
             comments
         });
     }
-  const addReplysLike = async (replyIndex, commentIndex, index, id, collectionName, Doc, amount) => {
+    const addReplysLike = async (replyIndex, commentIndex, index, id, collectionName, Doc, amount) => {
         let comments = Doc
 
         comments[commentIndex].replies[replyIndex].likes = comments[commentIndex].replies[replyIndex].likes + amount;

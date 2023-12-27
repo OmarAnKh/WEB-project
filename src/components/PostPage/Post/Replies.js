@@ -1,4 +1,4 @@
-import './OmarCompStyle.css'
+import '../../OmarCompStyle.css'
 import { useState } from 'react';
 const Replies = (props) => {
 
@@ -29,7 +29,7 @@ const Replies = (props) => {
                                         alt=""
                                         width="40"
                                         height="40"
-                                        style={{objectFit:"cover"}}
+                                        style={{ objectFit: "cover" }}
                                     />
                                 </a>
                             </div>

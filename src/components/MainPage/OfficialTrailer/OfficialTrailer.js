@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import VideoPlayer from "./OfficialTrailerPlayer";
-import './OmarCompStyle.css'
+import '../../OmarCompStyle.css'
 import { Link } from "react-router-dom";
 
 const OfficialTrailer = () => {
@@ -47,7 +47,7 @@ const OfficialTrailer = () => {
                                     alt="avatar"
                                     width={40}
                                     height={40}
-                                    style={{objectFit:"cover"}}
+                                    style={{ objectFit: "cover" }}
                                 />
                                 <b className="card-title" style={{ fontSize: "17px", marginBottom: 0, marginTop: "5px" }}>
                                     {video?.owner}
