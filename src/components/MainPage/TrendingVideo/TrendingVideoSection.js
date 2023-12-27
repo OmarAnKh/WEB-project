@@ -1,7 +1,7 @@
 import "./TrendingVideoSection.css"
 import TrendingCard from './TrendingCard';
 import "./TrendingCard.css";
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import React, { useState } from 'react';
 
 const TrendingCards = (video) => {

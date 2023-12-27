@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import "./music.css";

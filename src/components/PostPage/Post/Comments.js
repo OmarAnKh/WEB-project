@@ -1,7 +1,7 @@
 import Replies from "./Replies";
-import './OmarCompStyle.css'
+import '../../OmarCompStyle.css'
 import { useState } from "react";
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 const Comments = (props) => {
     const [showReplyInput, setShowReplyInput] = useState(false);
     const [replyContent, setReplyContent] = useState('');
@@ -59,7 +59,7 @@ const Comments = (props) => {
                                                             alt=""
                                                             width="50"
                                                             height="50"
-                                                            style={{objectFit:"cover"}}
+                                                            style={{ objectFit: "cover" }}
                                                         />
                                                     </a>
                                                 </div>

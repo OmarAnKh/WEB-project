@@ -1,6 +1,6 @@
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import VideoPlayer from "./RelatedVideoPlayer";
-import './OmarCompStyle.css'
+import '../../OmarCompStyle.css'
 import { Link } from "react-router-dom";
 const RelatedVideos = () => {
     const { data } = useFireStore("relatedVidoes");
@@ -23,7 +23,7 @@ const RelatedVideos = () => {
                                         alt="avatar"
                                         width={40}
                                         height={40}
-                                        style={{objectFit:"cover"}}
+                                        style={{ objectFit: "cover" }}
                                     />
                                     <div className="card-body">
                                         <b className="card-title" style={{ fontSize: "17px", marginBottom: 0, marginTop: "5px" }}>

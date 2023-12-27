@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useFireStore } from "../firebase/useFirestore";
+import { useFireStore } from "../../../firebase/useFirestore";
 import Comments from "./Comments";
 import './PostStyle.css'
-import './OmarCompStyle.css'
+import '../../OmarCompStyle.css'
 const Post = (props) => {
     const [amountOfComments, setAmountOfComments] = useState(1);
     const [commentContent, setCommentContent] = useState("");
@@ -220,7 +220,7 @@ const Post = (props) => {
     }
     else {
         return (
-            <div><div className="spinner" style={{marginLeft:"45%"}}>
+            <div><div className="spinner" style={{ marginLeft: "45%" }}>
                 <div></div>
                 <div></div>
                 <div></div>
