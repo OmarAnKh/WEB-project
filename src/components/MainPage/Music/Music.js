@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFireStore } from "../../../firebase/useFirestore";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import "./Music.css";
+import "./MusicVideStyle.css";
 
 const Music = () => {
     const { data } = useFireStore("music");
