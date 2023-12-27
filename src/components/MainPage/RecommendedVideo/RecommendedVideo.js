@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFireStore } from "../../../firebase/useFirestore";
 import { Link } from 'react-router-dom';
-
 function RecommendedVideo() {
     const { data } = useFireStore('RecommendedVideo');
     return (

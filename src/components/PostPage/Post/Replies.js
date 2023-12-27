@@ -37,8 +37,8 @@ const Replies = (props) => {
                                 <div className="bg-light p-3 rounded">
                                     <div className="d-flex justify-content-between">
                                         <h6 className="mb-1">
-                                            {" "}
-                                            <a href="#!"> {reply["author"]}</a>{" "}
+                                            
+                                            <a href="#!"> {reply["author"]}</a>
                                         </h6>
                                         <small className="ms-2">{reply.time}</small>
                                     </div>
