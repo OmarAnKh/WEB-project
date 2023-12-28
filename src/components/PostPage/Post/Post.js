@@ -101,6 +101,7 @@ const Post = (props) => {
                                                 alt="avatar"
                                                 width={50}
                                                 height={50}
+                                                style={{ objectFit: "cover" }}
                                             />
 
 
